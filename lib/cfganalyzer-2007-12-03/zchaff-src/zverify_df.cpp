@@ -42,6 +42,7 @@
 #include <iostream>
 #include <fstream>
 #include <assert.h>
+#include <unistd.h>
 
 using namespace std;
 
