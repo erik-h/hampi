@@ -20,7 +20,8 @@ SUBDIRS=zchaff-src
 # change this to the OCaml installation directory
 #######
 #OCAML_DIR=/users/lange/lib/ocaml
-OCAML_DIR=/usr/lib/ocaml
+# OCAML_DIR=/usr/lib/ocaml
+OCAML_DIR=~/.local/lib/ocaml
 
 #######
 # change this to the directory in which libsat.a is installed
