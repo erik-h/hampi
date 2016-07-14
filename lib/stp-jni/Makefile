@@ -32,7 +32,7 @@ teststp:
 	fi
 
 all32:
-	g++ -Wall stp/STPJNI.c -o 32bit/libSTPJNI.so -shared -Iinclude -I/usr/lib/jvm/java-6-sun/include  -I/usr/lib/jvm/java-6-sun/include/linux -L32bit -lstp -fPIC  
+	g++ -Wall stp/STPJNI.c -o 32bit/libSTPJNI.so -shared -Iinclude -I$(JAVA_INCLUDE_PATH)  -I$(JAVA_INCLUDE_PATH)/linux -L32bit -lstp -fPIC  
 	find . -name '*.java' -exec javac -nowarn -cp .:../junit.jar -g -source 1.5 {} \;
 	jar -cvf STPJNI.jar stp/*.class stp/*.java
 	@cp STPJNI.jar ../
@@ -40,7 +40,7 @@ all32:
 	@cp 32bit/libstp.a ../
 
 all64:
-	g++ -Wall stp/STPJNI.c -o 64bit/libSTPJNI.so -shared -Iinclude -I/usr/lib/jvm/java-6-sun/include  -I/usr/lib/jvm/java-6-sun/include/linux -L64bit -lstp -fPIC  
+	g++ -Wall stp/STPJNI.c -o 64bit/libSTPJNI.so -shared -Iinclude -I$(JAVA_INCLUDE_PATH)  -I$(JAVA_INCLUDE_PATH)/linux -L64bit -lstp -fPIC  
 	find . -name '*.java' -exec javac -nowarn -cp .:../junit.jar -g -source 1.5 {} \;
 	jar -cvf STPJNI.jar stp/*.class stp/*.java
 	@cp STPJNI.jar ../
