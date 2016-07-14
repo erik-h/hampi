@@ -1,0 +1,10 @@
+/bin/cfganalyzer
+/obj/*.o
+/obj/*.cmx
+/obj/*.cmi
+/src/parser.ml
+/src/parser.mli
+/src/lexer.ml
+/src/lexer.mli
+/src/zchaff.mli
+/src/basics.mli

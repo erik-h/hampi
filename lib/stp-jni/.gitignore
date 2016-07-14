@@ -1,0 +1,7 @@
+/stp/*.class
+/stp/examples/*.class
+/tests/*.class
+/stp/*.o
+/tests/*.so
+/64bit/libSTPJNI.so
+/STPJNI.jar

@@ -1,0 +1,13 @@
+/bin/
+/lib/STPJNI.jar
+/buildlexerparserast.sh
+/cfg2hmp.sh
+/hampi.sh
+/hampi_client.sh
+/hampi_server.sh
+/lib/libSTPJNI.so
+/lib/libsat.a
+/lib/libstp.a
+/run.sh
+/runAllTests.sh
+/runHampiProfiler.sh
