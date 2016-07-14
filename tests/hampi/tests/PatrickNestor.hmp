@@ -1,0 +1,7 @@
+var v :15 .. 100;
+
+cfg LaChar := ['0'-'9'] | ['a'-'z'] | ['A' - 'Z'] "
+reg R := fix(LaChar,8);
+
+
+assert v in hexBinary;

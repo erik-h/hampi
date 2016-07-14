@@ -1,0 +1,7 @@
+var v : 10 .. 12;
+
+cfg fo := "FO" ba | "FO";
+cfg ba := "BA" fo | "BA" | "(" ba fo ")";
+
+assert v in fo;
+assert v contains "(BAFO)";

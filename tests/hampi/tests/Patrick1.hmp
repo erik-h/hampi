@@ -1,0 +1,14 @@
+var v : 12;
+
+cfg SqlSmall := "SELECT " (Letter)+ " FROM " (Letter)+ " WHERE " Cond;
+cfg Cond := Val "=" Val | Cond " OR " Cond;
+cfg Val := (Letter)+ | "'" (LetterOrDigit)* "'" | (Digit)+;
+cfg LetterOrDigit := Letter | Digit;
+cfg Letter := ['a' - 'z'];
+cfg Digit :=  ['0' - '9'];
+
+val q := concat("SELECT msg FROM messages WHERE topicid='", v, "'");
+
+//constraints
+assert q in SqlSmall;
+assert q contains "OR '1'='1'";

@@ -1,0 +1,9 @@
+var v : 6 .. 10;
+
+cfg Digit := ['0' - '9'];
+cfg Letter := ['a'-'z'] | ['A'-'Z'];
+cfg Ascii := Letter | Digit | " " | "";
+cfg Asciistar := Ascii Asciistar | "b" ;
+cfg Greater := "C" Asciistar;
+
+assert v in Greater;

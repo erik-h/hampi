@@ -1,0 +1,5 @@
+
+var v : 3;
+cfg Letter :=['a' - 'z'];
+cfg E1 := "(" Letter ")";
+assert v in E1;

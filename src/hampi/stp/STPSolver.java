@@ -49,13 +49,17 @@ public class STPSolver extends AbstractSolver{
   @Override
   public Solution solve(Constraint constraint, int size){
     try{
+
       if (verbose){
         System.out.println();
         System.out.println("size:" + size);
         //                System.out.println(c);
       }
       if (constraint.getConjuncts().isEmpty())
+      {
+
         return Solution.createSAT();
+	}
 
       if (constraint.getVariables().size() == 0)
         throw new UnsupportedOperationException("Must supply at least one variable");
@@ -67,7 +71,10 @@ public class STPSolver extends AbstractSolver{
       Constraint c = addVarInSigmaStarConstraint(constraint, v);
       c.removeUnequalSizeEqualities(size);
       if (!isValidSubsequencesLength(constraint, size) || !isValidEqualityLength(constraint.getEqualsConjuncts(), size))
-        return Solution.createUNSAT(); //cut this short
+	{
+
+	       return Solution.createUNSAT(); //cut this short
+	}
 
       if (size == 0){//try empty string without calling STP
         Solution emptyStringSol = Solution.createSAT();
@@ -79,7 +86,10 @@ public class STPSolver extends AbstractSolver{
 
       int varlength = size;
       if (!constraint.isLegal(varlength))
-        return Solution.createUNSAT();
+	{
+
+        	return Solution.createUNSAT();
+	}
       if (verbose){
         System.out.println("length:" + varlength);
       }
@@ -96,16 +106,28 @@ public class STPSolver extends AbstractSolver{
       BVExpr[] regularExpressionBvs = new BVExpr[regExpConjuncts.size()];
       int[] regularExpressionBvLens = new int[regExpConjuncts.size()];
       if (!makeBitVectorsForRegularExpressions(regExpConjuncts, varlength, expressions, regularExpressionBvs, regularExpressionBvLens))
-        return Solution.createUNSAT();
+	{
+
+        	return Solution.createUNSAT();
+	}
 
       BVExpr[] equalsBvs = new BVExpr[2 * equalsConjuncts.size()];
       int[] equalsBvLens = new int[2 * equalsConjuncts.size()];
       if (!makeBitVectorsForEqualsExpressions(equalsConjuncts, varlength, expressions, equalsBvs, equalsBvLens, regularExpressionBvs.length))
-        return Solution.createUNSAT();
+	{
+        	return Solution.createUNSAT();
+	}
 
       STPExpr stpFormula = AndExpr.create(this, expressions);
       STPExpr stpVarFormula = AndExpr.create(this, stpFormula, linkVars(regExpConjuncts, regularExpressionBvs, equalsConjuncts, equalsBvs, varlength));
       STPExpr fullFormula = AndExpr.create(this, stpVarFormula, linkSubsequenceVals(regExpConjuncts, regularExpressionBvs, equalsConjuncts, equalsBvs, varlength));
+
+		//PAT
+//	System.out.println("FullFormula: "+fullFormula);
+//	System.out.println("Solver: "+fullFormula.getSolver());
+//	System.out.println("fullFormula.getExpr: "+ fullFormula.getExpr);
+
+
       createTimer.stop();
       List<STPExpr> alternatives;
       if (OPT_TOP_DISJ_SPLIT && fullFormula.getKind() == STPExprKind.OrExpr){
@@ -130,6 +152,19 @@ public class STPSolver extends AbstractSolver{
           sc.setVC(vc);
           nativeEncodingTimer.start();
           Expr full = expr.getExpr(sc, 0);
+
+	//PAT
+//	System.out.println("EXPR: "+ full.exprString());
+//	System.out.println("EXPR Name: " + full.exprName());
+//	System.out.println("Node ID: "+full.getExprID());
+//	System.out.println("BV Length: "+full.getBVLength());
+//	System.out.println("ValueBit width: "+full.getVWidth());
+//	System.out.println("EXPR KIND: "+full.getExprKind());
+//	System.out.println("getBVInt: " +full.getBVInt());
+//	System.out.println("GetDegree: "+full.getDegree());
+//	System.out.println("isBool: "+full.isBool(full));
+///
+
           nativeEncodingTimer.stop();
           solvingTimer.start();
           vc.assertFormula(full);
@@ -138,7 +173,11 @@ public class STPSolver extends AbstractSolver{
           //          System.out.println("Solving STP " + (query == 0) + "\n------------------------");
           if (query == 0){
             Solution sat = Solution.createSAT();
-            String decodedValue = decodeValue(sc, regularExpressionBvs);
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            String decodedValue = decodeValue(sc, regularExpressionBvs); //Regular Bit Vector, what is sc? , PAT
+
+		System.out.println(decodedValue);
             if (decodedValue != null){
               sat.setValue(v, decodedValue);
             }
@@ -150,7 +189,9 @@ public class STPSolver extends AbstractSolver{
         }
             }
 
+
       return Solution.createUNSAT();
+//	return Solution.createSAT();
     }finally{
       if (verbose){
         System.out.println(createTimer);

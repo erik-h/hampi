@@ -1,0 +1,5 @@
+var v : 4;
+cfg E1 := "()" | "(" E1 ")" | E1 E1 ;
+cfg E2 := | "(" E2 ")" ;
+assert v in E1 ;
+assert v in E2;

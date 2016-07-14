@@ -1,5 +1,5 @@
 //created from CFGAnalyzer file java_modifiers.cfg (see there for origin info)
-var hampiStringVar : 7;
+var hampiStringVar : 1 .. 20;
 cfg SimpleTypeName :=  "i" ;
 cfg ClassBodyDeclaration :=  ClassMemberDeclaration | ConstructorDeclaration ;
 cfg ClassMemberDeclaration :=  FieldDeclaration | MethodDeclaration ;

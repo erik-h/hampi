@@ -1,0 +1,15 @@
+var v : 150;
+cfg triangle:= "<ns:triangle>" args0 args1 args2 "</ns:triangle>";
+cfg args0 :=   args0t  | args0t args0t  | args0t args0t args0t ;
+cfg args0t := "<ns:args0>" double "</ns:args0>";
+cfg args1 :=   args1t  | args1t args1t  | args1t args1t args1t ;
+cfg args1t := "<ns:args1>" double "</ns:args1>";
+cfg args2 :=   args2t  | args2t args2t  | args2t args2t args2t ;
+cfg args2t := "<ns:args2>" double "</ns:args2>";
+cfg digit := ['0'-'9'];
+cfg char := ['!'-'~'];
+cfg string := (char)*;
+cfg double := digit "." (digit)+;
+assert v in triangle;
+
+assert v contains "5";

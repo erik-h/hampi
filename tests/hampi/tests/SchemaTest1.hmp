@@ -1,0 +1,10 @@
+var v : 50 .. 100;
+
+cfg images :=  "<images>" SEQUENCE0 "</images>"; 
+cfg SEQUENCE0 := imageREF0 ;
+cfg imageREF0 := image  | image image ;
+cfg image :=  "<image "  src "/>" ;
+cfg src :=  | "src =" SIMPLE0;
+cfg SIMPLE0 := " 'http://www.java2s.com' " | " 'http://www.java2s.com/style/logo.png' " | " 'http://www.java2s.com/isbn.html' ";
+
+assert v in images;

@@ -1,0 +1,4 @@
+var v: 1 .. 50;
+reg patt := ['a'-'z''A'-'Z''0'-'9']{8};
+
+assert v in patt;

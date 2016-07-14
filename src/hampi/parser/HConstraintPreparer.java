@@ -235,7 +235,7 @@ public final class HConstraintPreparer{
     GrammarStringBounder gsb = new GrammarStringBounder();
     Regexp boundedRegexp = gsb.getBoundedRegexp(g, cfg, size, false);
     w.stop();
-    System.out.println(w);
+//    System.out.println(w);
     if (boundedRegexp == null)
       throw HampiResultException.unsat();
     return boundedRegexp;

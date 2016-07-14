@@ -29,7 +29,7 @@ public final class HampiResultException extends RuntimeException{
   }
 
   public static HampiResultException unsat(){
-    return new HampiResultException("UNSAT", CODE_UNSAT);
+    return new HampiResultException("UNSATIS", CODE_UNSAT);
   }
 
   public static HampiResultException parse(String string){

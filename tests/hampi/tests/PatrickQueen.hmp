@@ -1,0 +1,30 @@
+var v : 16;
+
+
+//Error with substrings?
+val r1 := v[0:4];
+val r2 := v[4:4];
+val r3 := v[8:4];
+val r4 := v[12:4];
+
+cfg empty := "e";
+cfg square:= "e" | "q";  
+cfg board := (square)*;
+cfg row := (empty)* "q" (empty)*;
+reg rr1 := concat(star("e") , concat ( "q", star("e")));
+reg rr2 := concat(star("e") , concat ( "q", star("e")));
+
+
+
+assert r4 contains "q";
+assert r3 contains "q";
+assert r2 in rr1;
+assert r1 in rr2;
+
+//assert r1 in row;
+//assert r2 in row;
+assert r3 in row;
+//assert r4 in row;
+
+
+assert v in board;

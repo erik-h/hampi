@@ -52,7 +52,7 @@ public class GrammarStringBounder{
     new UselessProductionCycleRemover().remove(g, startSymbol);//in-place
     bounds = new GeneratableStringCounter().getBounds(g, oneCharTerminals);
     Regexp result = internalGetBoundedRegexp(g, startSymbol, bound);
-    System.out.println(distroTimer);
+//    System.out.println(distroTimer);
     return result;
   }
 

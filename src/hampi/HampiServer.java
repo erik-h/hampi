@@ -37,7 +37,7 @@ public final class HampiServer{
 
       // a "blocking" call which waits until a connection is requested
       Socket clientSocket = serverSocket.accept();
-      System.out.println(new Date() + " accepted connection");
+//      System.out.println(new Date() + " accepted connection");
 
       // open up IO streams
       In in = new In(clientSocket);
@@ -56,7 +56,7 @@ public final class HampiServer{
         clientSocket.close();
         return;
       }
-      System.out.println("solving: " + fname);
+     // System.out.println("solving: " + fname);
 
       PrintStream oldOut = System.out;
       try{
@@ -82,7 +82,7 @@ public final class HampiServer{
       }finally{
         System.setOut(oldOut);
         // close IO streams, then socket
-        System.out.println(new Date() + " closing connection");
+  //      System.out.println(new Date() + " closing connection");
         out.close();
         in.close();
         clientSocket.close();

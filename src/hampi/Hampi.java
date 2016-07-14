@@ -246,6 +246,8 @@ public final class Hampi{
    */
   public static void main(String[] args) throws Exception{
     try{
+	//PAT
+//	System.out.println("Input Filename: "+ args[0]);
       run(args);
     }catch (HampiResultException e){
       System.out.println(e.getMessage());
@@ -290,19 +292,27 @@ public final class Hampi{
     int sizeMin = parse.getVarSizeMin();
     int sizeMax = parse.getVarSizeMax();
     for(int size = sizeMin; size <= sizeMax; size++){
+
       try{
+
+
         Constraint c = new HConstraintPreparer(hampi, size).prepare(parse);
+
         assert c != null;
         if (verbose){
           //      System.out.println(parse);
           hampi.getSolver().verbose = verbose;
         }
+
         Solution solve = hampi.solve(c, size);
+
         if (verbose){
            System.out.println("solution for size " + size + " " + solve);
         }
+
+
         if (solve.isSatisfiable()){
-           System.out.println(solve);
+          // System.out.println(solve);
 	   return solve;
         }
       }catch(HampiResultException e){

@@ -1,0 +1,8 @@
+var v:2;
+
+cfg E := "()" | E E | "(" E ")";
+reg Efixed := fix(E,6);
+val q := concat( "((" , v , "))" );
+
+assert q in Efixed;
+assert q contains "())"; 

@@ -1,0 +1,16 @@
+var v: 1 .. 10;
+val vSub1 := v[0:3];
+val vSub2 := v[3:3];
+val vSub3 := v[6:3];
+val vSub4 := v[2:2];
+val c := "deg";
+reg sigmaStar := star(['a'-'z']);
+reg r := concat ("b" , sigmaStar);
+assert vSub1 contains "de";
+assert vSub2 contains "ef";
+assert vSub1 equals c;
+assert vSub1 not equals vSub4;
+assert v not equals c;
+assert vSub3 in r;
+assert vSub3 equals vSub2;
+

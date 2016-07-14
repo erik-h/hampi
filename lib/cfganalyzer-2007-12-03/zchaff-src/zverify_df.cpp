@@ -42,7 +42,9 @@
 #include <iostream>
 #include <fstream>
 #include <assert.h>
+#include <sys/types.h>
 #include <unistd.h>
+
 
 using namespace std;
 

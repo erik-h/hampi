@@ -1,0 +1,13 @@
+var v : 50 .. 100;
+
+cfg triangle := "<ns:triangle>" arg1 arg2 arg3 "</ns:triangle>";
+cfg arg1 := "<ns:arg1>" float "</ns:arg1>";
+cfg arg2 := "<ns:arg2>" string "</ns:arg2>";
+cfg arg3 := "<ns:arg3>" string "</ns:arg3>";
+
+cfg digit := ['0'-'9'];
+cfg float := digit "." (digit)+;
+cfg char := ['!'-'~'];
+cfg string := (char)+;
+
+assert v in triangle;

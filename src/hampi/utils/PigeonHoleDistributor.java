@@ -145,6 +145,12 @@ public class PigeonHoleDistributor{
         List<Integer> subListLowers = lowerBounds.subList(1, lowerBounds.size());
         List<Integer> subListUppers = upperBounds.subList(1, upperBounds.size());
         firstHoleAllocation: for (int i = low; i <= high; i++){
+
+
+
+//PAT REMOVED THIS, sort of fixes problem of unsat for constant strings in grammar sequence children
+
+//******************************************************************************************************************//
           //we skip skip any i that is already present in any result
           for (List<Integer> is : result){
             if (is.contains(i)){

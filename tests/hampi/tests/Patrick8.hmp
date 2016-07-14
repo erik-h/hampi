@@ -1,0 +1,5 @@
+var v : 4;
+cfg A:="a" | A B;
+cfg B:="b" | B A;
+
+assert v in A;
