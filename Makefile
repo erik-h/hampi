@@ -14,6 +14,14 @@
 TDY = $(shell date +%Y%m%d)
 
 all:
+ifndef JAVA_INCLUDE_PATH
+	@echo "Error: JAVA_INCLUDE_PATH must be set." >&2
+	@exit 1
+endif
+ifndef OCAML_DIR
+	@echo "Error: OCAML_DIR must be set." >&2
+	@exit 1
+endif
 	./configure
 	$(MAKE) -C lib all
 	ant
